@@ -1,4 +1,3 @@
-// DOM Elements
 const themeToggle = document.getElementById('themeToggle');
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
@@ -9,7 +8,6 @@ const projectCards = document.querySelectorAll('.project-card');
 const skillBars = document.querySelectorAll('.skill-level');
 const profileImage = document.getElementById('profileImage');
 
-// Lightbox Elements
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxClose = document.getElementById('lightboxClose');
@@ -53,7 +51,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// ====== SMOOTH SCROLLING ======
+// SMOOTH SCROLLING
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -73,12 +71,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ====== PROJECT FILTERING ======
+
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons
+    
         filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
+  
         button.classList.add('active');
         
         const filterValue = button.getAttribute('data-filter');
@@ -103,7 +101,6 @@ filterButtons.forEach(button => {
     });
 });
 
-// ====== ANIMATE SKILL BARS ======
 function animateSkillBars() {
     skillBars.forEach(bar => {
         const level = bar.getAttribute('data-level');
@@ -111,7 +108,6 @@ function animateSkillBars() {
     });
 }
 
-// ====== CONTACT FORM ======
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -121,7 +117,6 @@ contactForm.addEventListener('submit', function(e) {
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
     
-    // Simple validation
     if (!name || !email || !subject || !message) {
         showFormMessage('Please fill in all fields.', 'error');
         return;
@@ -132,11 +127,8 @@ contactForm.addEventListener('submit', function(e) {
         return;
     }
     
-    // In a real application, you would send this data to a server
-    // For demo purposes, we'll just show a success message
     showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
     
-    // Reset form
     contactForm.reset();
 });
 
@@ -156,7 +148,6 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// ====== LIGHTBOX FUNCTIONALITY ======
 // Open lightbox
 galleryImages.forEach((img, index) => {
     img.addEventListener('click', () => {
@@ -243,10 +234,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
 skillBars.forEach(bar => observer.observe(bar));
 
-// ====== STICKY NAVIGATION ======
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
@@ -256,12 +245,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ====== INITIALIZE ON PAGE LOAD ======
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     animateSkillBars();
     
-    // Add click outside to close mobile menu
     document.addEventListener('click', (e) => {
         if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
             navLinks.classList.remove('active');
