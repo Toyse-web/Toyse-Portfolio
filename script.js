@@ -17,7 +17,6 @@ const galleryImages = document.querySelectorAll('.gallery-img');
 
 let currentImageIndex = 0;
 
-// ====== THEME TOGGLE ======
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.body.classList.toggle('dark-theme', savedTheme === 'dark');
